@@ -35,7 +35,11 @@ A simple Notes application built with **React, Vite, Tailwind CSS, and React Rou
      - Commit and redeploy  
 
 ## 📸 Screenshots  
-*(Add screenshots of your app here for a better README!)*  
+![image](https://github.com/user-attachments/assets/00f8664a-ca30-4f25-b5eb-43967c9ffc08)
+![image](https://github.com/user-attachments/assets/e63510ee-40c4-45a9-81f6-910b3cd0509a)
+![image](https://github.com/user-attachments/assets/6d502cf8-784c-4452-a1e7-d48927133013)
+
+
 
 ## 📜 License  
 This project is **open-source** under the MIT License.  
