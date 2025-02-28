@@ -81,25 +81,7 @@ const editNote = async (req, res) =>  {
     }
   };
 
-// const getAllNotes = async (req, res) => {
-//     try {
-//         const  user  = req.user;
-//         const notes = await Note.find({ userId: user._id }).sort({
-//             isPinned: -1
-//         });
-        
-//         return res.json({
-//             error: false,
-//             notes,
-//             message: "All notes retrieved successfully"
-//         });
-//     } catch (error) {
-//         return res.status(500).json({
-//             error: true,
-//             message: "Internal server error",
-//         });
-//     }
-// };
+
 
 const getAllNotes = async (req, res) => {
   try {
@@ -145,8 +127,8 @@ const deleteNote = async (req, res) => {
 
 const updateNotePinned = async (req, res) => {
     const noteId = req.params.noteId;
-    const { isPinned } = req.body;
-    const user  = req.user;
+    const  {isPinned}  = req.body;
+    const {user}  = req.user;
 
     try {
         const note = await Note.findOne({ _id: noteId, userId: user._id });
