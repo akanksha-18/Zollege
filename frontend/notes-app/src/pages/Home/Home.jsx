@@ -88,35 +88,22 @@ const handleCloseToast=()=>{
      }
   }
 
-  // const onSearchNote=async(query)=>{
-  //      try{
-  //       const response=await axiosInstance.get("/api/notes/search-notes",{
-  //         params:{query},
+  const onSearchNote=async(query)=>{
+       try{
+        const response=await axiosInstance.get("/api/notes/search-notes",{
+          params:{query},
 
-  //       });
-  //       if(response.data && response.data.notes){
-  //         setIssearch(true);
-  //         setAllNotes(response.data.notes);
-  //       }
-  //      }catch(error){
-  //       console.log(error);
+        });
+        if(response.data && response.data.notes){
+          setIssearch(true);
+          setAllNotes(response.data.notes);
+        }
+       }catch(error){
+        console.log(error);
         
-  //      }
-  // }
-  const onSearchNote = async(query) => {
-    try {
-      const response = await axiosInstance.get("/api/notes/search-notes", {
-        params: {query},
-      });
-      if(response.data && response.data.notes) {
-        setIssearch(true);
-        setAllNotes(response.data.notes);
-      }
-    } catch(error) {
-      console.error("Search failed:", error);
-      showToastMessage("Search failed. Please try again.", "error");
-    }
+       }
   }
+  
   
   const handleClearSearch = async() => {
     setIssearch(false);

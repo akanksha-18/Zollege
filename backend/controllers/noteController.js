@@ -104,7 +104,7 @@ const getAllNotes = async (req, res) => {
 };
 const deleteNote = async (req, res) => {
       const noteId=req.params.noteId;
-      const user =req.user;
+      const {user} =req.user;
       try{
         const note=await Note.findOne({_id:noteId,userId:user._id});
         if(!note){
@@ -156,7 +156,7 @@ const updateNotePinned = async (req, res) => {
 
 
 const searchNotes = async (req, res) => {
-    const user = req.user;
+    const {user} = req.user;
     const query = req.query.query; 
     
     if (!query) {
