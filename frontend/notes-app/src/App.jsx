@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import LandingPage from "./pages/LandingPage";
-import SignUp from "./pages/SignUp/SignUp";
+import SignUp from "./pages/Signup/Signup";
 
 const App = () => {
   return (
