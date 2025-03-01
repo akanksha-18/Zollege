@@ -5,6 +5,10 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(),tailwindcss()],
   server: {
-    historyApiFallback: true, // Ensures React Router works on refresh
+    historyApiFallback: true, 
   },
+  preview: {
+    port: 3000,
+    historyApiFallback: true
+  }
 })
