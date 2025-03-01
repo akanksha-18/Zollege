@@ -4,12 +4,14 @@ import PasswordInput from "../../components/Input/PasswordInput";
 import { validateEmail } from "../../utils/helper";
 import axiosInstance from "../../utils/axiosInstance";
 import notes from "../../assets/notes.jpg";
+import Loader from '../../components/Loader/Loader'
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
-    
+    const [loading, setLoading] = useState(false);
+
     const navigate = useNavigate();
     
     const handleLogin = async (e) => {
@@ -23,6 +25,7 @@ const Login = () => {
             return;
         }
         setError("");
+        setLoading(true);
         
         // Login API Call
         try {
@@ -36,6 +39,8 @@ const Login = () => {
             }
         } catch (error) {
             setError(error.response?.data?.message || "An unexpected error occurred");
+        }finally {
+            setLoading(false); 
         }
     };
     
@@ -52,6 +57,7 @@ const Login = () => {
                     transform: 'scale(1.1)'
                 }}
             ></div>
+               <Loader loading={loading} />
            
             <div className="relative z-10 h-full flex items-center justify-center">
                 <div className="bg-black bg-opacity-50 p-10 rounded-lg shadow-lg text-white w-full max-w-md">

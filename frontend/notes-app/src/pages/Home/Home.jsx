@@ -140,32 +140,36 @@ const handleCloseToast=()=>{
   
   return (
     <>
-      <Navbar userInfo={userInfo}  onSearchNote={onSearchNote} handleClearSearch={handleClearSearch}/>
+      <Navbar userInfo={userInfo} onSearchNote={onSearchNote} handleClearSearch={handleClearSearch}/>
      
-      <div className="container mx-auto p-6">
-  {allNotes.length > 0 ? (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 mt-8 place-items-center">
-    {allNotes.map((item) => (
-      <NoteCard
-        key={item._id}
-          title={item.title}
-          date={item.createdOn}
-          content={item.content}
-          tags={item.tags}
-          isPinned={item.isPinned}
-          onEdit={() => handleEdit(item)}
-          onDelete={() => deleteNote(item)}
-          onPinNote={() => updateIsPinned(item)}
-        />
-      ))}
-    </div>
-  ) : (
-    <EmptyCard />
-  )}
-</div>
+   
+      <div className="min-h-screen bg-gradient-to-b from-gray-800 to-gray-900 py-8">
+        <div className="container mx-auto p-6">
+          {allNotes.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 mt-8 place-items-center">
+              {allNotes.map((item) => (
+                <div key={item._id} className="w-full transform transition-all duration-300 hover:scale-105">
+                  <NoteCard
+                    title={item.title}
+                    date={item.createdOn}
+                    content={item.content}
+                    tags={item.tags}
+                    isPinned={item.isPinned}
+                    onEdit={() => handleEdit(item)}
+                    onDelete={() => deleteNote(item)}
+                    onPinNote={() => updateIsPinned(item)}
+                  />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <EmptyCard />
+          )}
+        </div>
+      </div>
 
       <button 
-        className="w-16 h-16 flex items-center justify-center rounded-2xl bg-blue-500 hover:bg-blue-600 absolute right-10 bottom-10"
+        className="w-16 h-16 flex items-center justify-center rounded-2xl bg-blue-500 hover:bg-blue-600 absolute right-10 bottom-10 shadow-lg"
         onClick={() => {
           setOpenAddEditModal({isShown: true, type: "add", data: null})
         }}
@@ -177,11 +181,12 @@ const handleCloseToast=()=>{
         onRequestClose={() => setOpenAddEditModal({isShown: false, type: "add", data: null})}
         style={{
           overlay: {
-            backgroundColor: "rgba(0,0,0,0.2)",
+            backgroundColor: "rgba(0,0,0,0.5)",
+            zIndex: 1000,
           },
         }}
-        contentLabel=""
-        className="w-[40%] max-h-3/4 bg-white rounded-md mx-auto mt-14 p-5 overflow-scroll"
+        contentLabel="Add/Edit Note"
+        className="w-[40%] max-h-3/4 bg-white rounded-lg mx-auto mt-14 p-5 overflow-auto shadow-xl"
       >
         <AddEditNotes
           type={openAddEditModal.type}
@@ -194,15 +199,13 @@ const handleCloseToast=()=>{
         />
       </Modal>
       <Toast
-      isShown={showToastMsg.isShown}
-      message={showToastMsg.message}
-      type={showToastMsg.type}
-      onClose={handleCloseToast}
+        isShown={showToastMsg.isShown}
+        message={showToastMsg.message}
+        type={showToastMsg.type}
+        onClose={handleCloseToast}
       />
     </>
   )
 }
 
 export default Home
-
-
