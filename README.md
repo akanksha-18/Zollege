@@ -14,7 +14,7 @@ Backend Link : https://zollege.onrender.com/
 
 ## 🛠️ Tech Stack
 - **Frontend**: React, Vite, Tailwind CSS, React Router  
-- **State Management**: useState, useContext  
+- **State Management**: useState 
 - **UI Notifications**: React Toastify  
 
 ## 🔧 Installation & Setup  
